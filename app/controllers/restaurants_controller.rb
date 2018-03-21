@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_resource, only: %i[show edit update]
+  before_action :set_resource, only: %i[show edit update set_prices]
 
   def index
     @restaurants = Restaurant.all
@@ -23,6 +23,10 @@ class RestaurantsController < ApplicationController
     redirect_to @restaurant
   end
 
+  def set_prices
+    @menu_items = @restaurant.menu_items
+  end
+
   private
 
   def strong_params
@@ -31,7 +35,8 @@ class RestaurantsController < ApplicationController
       .permit(:name,
               :description,
               :category,
-              item_ids: [])
+              item_ids: [],
+              menu_items_attributes: [:price, :id])
   end
 
   def set_resource

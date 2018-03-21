@@ -1,0 +1,10 @@
+h1 Set Prices for #{@restaurant.name}
+
+= form_for @restaurant do |f|
+  = f.fields_for :menu_items, @menu_items do |m|
+    .form-group
+      = m.object.name
+      = m.number_field :price
+
+  .form-group
+    = f.submit class: 'btn btn-dark'

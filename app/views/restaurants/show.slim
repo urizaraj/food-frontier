@@ -4,8 +4,15 @@ h3 = @restaurant.category
 
 br
 
-h3 Menu Items
-- @restaurant.items.each do |item|
-  h4 = item.name
+h3 Menu
+.row
+  - @restaurant.menu_items.each do |item|
+    .col-4
+      h4 = item.name
+    .col-auto
+      h4 = item.price ? "$#{item.price}" : 'no price'
 
-= link_to 'Edit', edit_restaurant_path(@restaurant)
+.row
+  .col
+    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-light'
+    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-light'
