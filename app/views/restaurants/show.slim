@@ -1,5 +1,11 @@
-h1= @restaurant.name
-h2= @restaurant.description
-h3= @restaurant.category
+h1 = @restaurant.name
+h2 = @restaurant.description
+h3 = @restaurant.category
+
+br
+
+h3 Menu Items
+- @restaurant.items.each do |item|
+  h4 = item.name
 
 = link_to 'Edit', edit_restaurant_path(@restaurant)
