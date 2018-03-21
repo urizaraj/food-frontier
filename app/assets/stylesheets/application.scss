@@ -12,6 +12,10 @@
  *
  */
 
- $enable-rounded: false;
+ @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 
- @import "bootstrap";
+$font-family-base: 'Fira Sans', sans-serif;
+
+$enable-rounded: false;
+
+@import "bootstrap";
