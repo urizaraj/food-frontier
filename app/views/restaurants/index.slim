@@ -1,0 +1,4 @@
+ul.list-group
+  - @restaurants.each do |r|
+    li.list-group-item
+      = link_to r.name, r
