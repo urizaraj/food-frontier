@@ -26,7 +26,12 @@ class RestaurantsController < ApplicationController
   private
 
   def strong_params
-    params.require(:restaurant).permit(:name, :description, :category)
+    params
+      .require(:restaurant)
+      .permit(:name,
+              :description,
+              :category,
+              item_ids: [])
   end
 
   def set_resource
