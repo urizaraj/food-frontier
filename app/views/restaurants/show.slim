@@ -9,10 +9,10 @@ h3 Menu
   - @restaurant.menu_items.each do |item|
     .col-4
       h4 = item.name
-    .col-auto
-      h4 = item.price ? "$#{item.price}" : 'no price'
+    .col-1
+      h4 = item.price ? "$#{item.price}" : '?'
 
 .row
   .col
-    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-light'
-    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-light'
+    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-dark'
+    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-dark'
