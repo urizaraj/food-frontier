@@ -6,12 +6,14 @@
   .form-group
     = f.text_field :category, class: 'form-control', placeholder: 'Category'
 
-  .row
-    = f.collection_check_boxes :item_ids, Item.all, :id, :name do |b|
-      .col-auto
-        = b.label do
-          = b.check_box class: 'mr-2'
-          = b.text
+  - %i[entrees sides drinks].each do |tag|
+    .mb-1: strong = tag
+    .row
+      = f.collection_check_boxes :item_ids, Item.send(tag), :id, :name do |b|
+        .col-auto
+          = b.label do
+            = b.check_box class: 'mr-2'
+            = b.text
 
   .form-group
     = f.submit class: 'btn btn-dark'
