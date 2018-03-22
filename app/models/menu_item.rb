@@ -2,6 +2,8 @@ class MenuItem < ApplicationRecord
   belongs_to :restaurant
   belongs_to :item
 
+  accepts_nested_attributes_for :item
+
   def name
     item.name
   end

@@ -1,0 +1,23 @@
+- if menu_item.errors.any?
+  - menu_item.errors.full_messages.each do |msg|
+    p = msg
+
+= form_for [restaurant, menu_item] do |f|
+  .form-group = f.fields_for :item, Item.new do |i|
+    .form-group
+      = i.label :name
+      = i.text_field :name, class: 'form-control'
+    .form-group
+      = i.label :description
+      = i.text_field :description, class: 'form-control'
+    .row
+      = i.collection_radio_buttons :item_tag_ids, ItemTag.main, :id, :name do |b|
+        .col-auto
+          = b.label do
+            = b.radio_button class: 'mr-2'
+            = b.text
+  .form-group
+    = f.label :price
+    = f.number_field :price, class: 'form-control'
+  = f.hidden_field :restaurant_id
+  = f.submit class: 'btn btn-primary'
