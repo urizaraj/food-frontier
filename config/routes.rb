@@ -4,10 +4,15 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     resources :menu_items
+    resources :reviews
   end
+  get 'restaurants/:id/set_prices', to: 'restaurants#set_prices', as: 'prices_restaurant'
 
   resources :items
   resources :item_tags
 
-  get 'restaurants/:id/set_prices', to: 'restaurants#set_prices', as: 'prices_restaurant'
+  resources :users, only: [:show] do
+    resources :reviews
+  end
+
 end
