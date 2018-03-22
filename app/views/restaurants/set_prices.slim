@@ -2,9 +2,9 @@ h1 Set Prices for #{@restaurant.name}
 
 = form_for @restaurant do |f|
   = f.fields_for :menu_items, @menu_items do |m|
-    .form-group
-      = m.object.name
-      = m.number_field :price
+    .form-group.row
+      .col-2.col-form-label = m.object.name
+      .col-4 = m.number_field :price, class: 'form-control'
 
   .form-group
     = f.submit class: 'btn btn-dark'

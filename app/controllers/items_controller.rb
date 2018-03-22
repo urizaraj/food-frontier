@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(strong_params)
-    redirect_to @item
+    redirect_to items_path
   end
 
   private
