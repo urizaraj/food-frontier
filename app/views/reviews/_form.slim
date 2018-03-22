@@ -1,0 +1,8 @@
+= form_for [parent, review] do |f|
+  .form-group = f.text_field :title, class: 'form-control'
+  .form-group = f.text_area :content, class: 'form-control'
+
+  .form-group = f.select :rating, options_for_select((1..5).to_a.reverse), {}, {class: 'custom-select'}
+
+  .form-group
+    = f.submit 'Submit Review', class: 'btn btn-primary'
