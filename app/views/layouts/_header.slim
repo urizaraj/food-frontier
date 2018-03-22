@@ -9,3 +9,9 @@
       = link_to 'Restaurant', new_restaurant_path, class: 'dropdown-item'
       = link_to 'Item', new_item_path, class: 'dropdown-item'
       = link_to 'Item Tag', new_item_tag_path, class: 'dropdown-item'
+  - if user_signed_in?
+    .col-auto = link_to current_user.email, '#', class: 'btn btn-link'
+    .col-auto = link_to 'Sign Out', destroy_user_session_path, method: 'delete', class: 'btn btn-link'
+  - else
+    .col-auto = link_to 'Sign In', new_user_session_path, class: 'btn btn-link'
+    .col-auto = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-link'
