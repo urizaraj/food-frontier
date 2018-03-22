@@ -5,23 +5,23 @@ h3 = @restaurant.category
 br
 
 h2 Menu
-h3 Entrees
+h3.text-primary Entrees
 .row
   - @restaurant.menu_items.entrees.each do |item|
     .col-4
       h4 = item.name
     .col-1
       h4 = item.price ? "$#{item.price}" : '?'
-
-h3 Sides
+br
+h3.text-primary Sides
 .row
   - @restaurant.menu_items.sides.each do |item|
     .col-4
       h4 = item.name
     .col-1
       h4 = item.price ? "$#{item.price}" : '?'
-
-h3 Drinks
+br
+h3.text-primary Drinks
 .row
   - @restaurant.menu_items.drinks.each do |item|
     .col-4
