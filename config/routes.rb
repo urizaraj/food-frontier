@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :menu_items
   end
 
+  resources :items
+
   get 'restaurants/:id/set_prices', to: 'restaurants#set_prices', as: 'prices_restaurant'
 end
