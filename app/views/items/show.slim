@@ -1,2 +1,10 @@
 h1 = @item.name
 h2 = @item.description
+
+br
+
+h2 Tags
+.row
+  - @item.item_tags.each do |it|
+    .col-auto
+      strong = link_to it.name, it

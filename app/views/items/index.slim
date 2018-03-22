@@ -1,0 +1,10 @@
+h1 All Items
+
+.row
+  - @items.each do |item|
+    .col-auto
+      .card.mb-2
+        .card-body
+          strong = item.name
+          = link_to 'Link', item, class: 'btn btn-light btn-sm'
+          = link_to 'Edit', edit_item_path(item), class: 'btn btn-light btn-sm'
