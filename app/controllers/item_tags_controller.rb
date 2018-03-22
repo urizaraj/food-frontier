@@ -1,6 +1,10 @@
 class ItemTagsController < ApplicationController
   before_action :set_tag, only: %i[show edit update]
 
+  def index
+    @item_tags = ItemTag.all
+  end
+
   def new
     @tag = ItemTag.new
   end
