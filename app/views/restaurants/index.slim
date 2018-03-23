@@ -1,3 +1,10 @@
-.list-group
+h1.display-4 Browse Restaurants
+
+.row
   - @restaurants.each do |r|
-      = link_to r.name, r, class: 'list-group-item'
+    .col-6
+      = link_to r do
+        .card.mb-3
+          .card-body
+            h2.card-title = r.name
+            p.card-text.mb-0 = r.description
