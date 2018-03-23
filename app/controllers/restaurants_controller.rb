@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant.update(strong_params)
+    return render :set_prices unless @restaurant.update(strong_params)
 
     redirect_to @restaurant
   end
@@ -34,13 +34,12 @@ class RestaurantsController < ApplicationController
   private
 
   def strong_params
-    params
-      .require(:restaurant)
-      .permit(:name,
-              :description,
-              :category,
-              item_ids: [],
-              menu_items_attributes: [:price, :id])
+    params.require(:restaurant)
+          .permit(:name,
+                  :description,
+                  :category,
+                  item_ids: [],
+                  menu_items_attributes: %i[price id])
   end
 
   def set_resource
