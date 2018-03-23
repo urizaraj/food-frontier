@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :item_tags, through: :item_to_item_tags
 
   validates :name, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
   validate :has_main_tag
 
   def drink
@@ -33,8 +33,7 @@ class Item < ApplicationRecord
   end
 
   def has_main_tag
-    unless %i[drink side entree].find_all { |sym| send(sym) }.size == 1
-      errors.add(:base, 'Must be a drink, entree, or side')
-    end
+    return if [drink, side, entree].one?
+    errors.add(:base, 'Must be a drink, entree, or side')
   end
 end
