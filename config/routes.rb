@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :item_tags
 
   resources :users, only: [:show] do
-    resources :reviews
+    resources :reviews, only: %i[index show]
   end
 
 end
