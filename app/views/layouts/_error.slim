@@ -1,0 +1,5 @@
+- if resource.errors.any?
+  .alert.alert-danger
+    h4.alert-heading Error
+    - resource.errors.full_messages.each do |msg|
+      p.mb-0 = msg  
