@@ -4,6 +4,15 @@ h3 = @restaurant.category
 
 br
 
+.row
+  .col
+    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-dark'
+    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-dark'
+    = link_to 'New Menu Item', new_restaurant_menu_item_path(@restaurant), class: 'btn btn-dark'
+    = link_to 'New Review', new_restaurant_review_path(@restaurant), class: 'btn btn-dark'
+
+br
+
 h2 Menu
 h3.text-primary Entrees
 .row
@@ -12,7 +21,9 @@ h3.text-primary Entrees
       h4 = item.name
     .col-1
       h4 = item.price ? "$#{item.price}" : '?'
+
 br
+
 h3.text-primary Sides
 .row
   - @restaurant.menu_items.sides.each do |item|
@@ -20,7 +31,9 @@ h3.text-primary Sides
       h4 = item.name
     .col-1
       h4 = item.price ? "$#{item.price}" : '?'
+
 br
+
 h3.text-primary Drinks
 .row
   - @restaurant.menu_items.drinks.each do |item|
@@ -29,8 +42,19 @@ h3.text-primary Drinks
     .col-1
       h4 = item.price ? "$#{item.price}" : '?'
 
-.row
-  .col
-    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-dark'
-    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-dark'
-    = link_to 'New Menu Item', new_restaurant_menu_item_path(@restaurant), class: 'btn btn-dark'
+br
+
+- if @restaurant.reviews.size > 0
+  h1 Reviews
+  - @restaurant.reviews.each do |r|
+    .card
+      .card-body
+        .row.justify-content-between
+          .col-auto
+            h2 = r.title
+          .col-auto
+            h2 by #{r.user.email}
+        h3
+          - r.rating.times do
+            i.fas.fa-star
+        p.mb-0 = r.content
