@@ -1,12 +1,14 @@
+= errors item
+
 = form_for item do |f|
   .form-group = f.text_field :name, class: 'form-control', placeholder: 'Name'
   .form-group = f.text_field :description, class: 'form-control', placeholder: 'Description'
 
   .row
-    = f.collection_radio_buttons :item_tag_ids, ItemTag.main, :id, :name do |b|
+    = f.collection_check_boxes :item_tag_ids, ItemTag.main, :id, :name do |b|
       .col-auto
         = b.label do
-          = b.radio_button class: 'mr-2'
+          = b.check_box class: 'mr-2'
           = b.text
 
   .row
@@ -16,4 +18,4 @@
           = b.check_box class: 'mr-2'
           = b.text
 
-  .form-group = f.submit class: 'btn btn-dark'
+  .form-group = f.submit class: 'btn btn-primary'
