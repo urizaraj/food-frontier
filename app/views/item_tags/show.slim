@@ -1,2 +1,9 @@
 h1 = @tag.name
 h2 = @tag.description
+
+br
+
+.row
+  - @tag.items.each do |item|
+    = link_to item, class: 'col-3' do
+      h4 = item.name

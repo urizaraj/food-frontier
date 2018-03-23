@@ -2,7 +2,8 @@ class ItemTagsController < ApplicationController
   before_action :set_tag, only: %i[show edit update]
 
   def index
-    @item_tags = ItemTag.all
+    @main = ItemTag.main
+    @other = ItemTag.other
   end
 
   def new

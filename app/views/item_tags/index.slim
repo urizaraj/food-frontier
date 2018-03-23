@@ -1,6 +1,13 @@
 h1 Item Tags
 
 .row
-  - @item_tags.each do |it|
-    .col-2
-      strong = it.name
+  - @main.each do |it|
+    .col-4
+      = link_to it do 
+        h2 = it.name.pluralize
+br
+h2 Other
+.row
+  - @other.each do |it|
+    .col-auto = link_to it do
+      h4 = it.name
