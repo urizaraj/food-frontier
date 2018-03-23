@@ -56,5 +56,11 @@ br
             h2 by #{r.user.email}
         h3
           - r.rating.times do
-            i.fas.fa-star
+            i.fas.fa-star.fa-sm
         p.mb-0 = r.content
+
+br
+
+- if user_signed_in?
+  h2 Leave a review
+  = render partial: 'reviews/form', locals: {restaurant: @restaurant, review: @review}

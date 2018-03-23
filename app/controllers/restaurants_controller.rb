@@ -5,15 +5,19 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def show
+    return unless user_signed_in?
+    @review = current_user.reviews.build
+    @review.restaurant = @restaurant
+  end
+
   def new
     @restaurant = Restaurant.new
   end
 
   def create
     @restaurant = Restaurant.new(strong_params)
-
     return render :new unless @restaurant.save
-
     redirect_to @restaurant
   end
 

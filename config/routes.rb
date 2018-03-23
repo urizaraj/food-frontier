@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews, only: %i[index show]
   end
-
 end
