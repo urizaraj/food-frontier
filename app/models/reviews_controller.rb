@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   
   def new
     @review = @parent.reviews.build
+    @review.user = current_user
   end
 
   def create
