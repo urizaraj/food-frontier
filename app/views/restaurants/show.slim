@@ -1,8 +1,6 @@
 h1 = @restaurant.name
-h2 = @restaurant.description
+h2.text-muted = @restaurant.description
 h3 = @restaurant.category
-
-br
 
 .row
   .col
@@ -45,21 +43,19 @@ h3.text-primary Drinks
 br
 
 - if @restaurant.reviews.size > 0
-  h1 Reviews
+  h2 Reviews
   - @restaurant.reviews.each do |r|
-    .card
+    .card.mb-2
       .card-body
         .row.justify-content-between
-          .col-auto
-            h2 = r.title
-          .col-auto
-            h2 by #{r.user.email}
-        h3
-          - r.rating.times do
-            i.fas.fa-star.fa-sm
-        p.mb-0 = r.content
+          .col-3
+            .mb-2.text-warning = render_stars r.rating
+            = r.user.name
+          .col
+            h4 = r.title
+            p.mb-0 = r.content
 
-br
+  br
 
 - if user_signed_in?
   h2 Leave a review
