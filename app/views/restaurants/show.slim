@@ -11,8 +11,7 @@
           i.fas.fa-cog>
         = link_to prices_restaurant_path(@restaurant) do
           i.fas.fa-dollar-sign>
-        = link_to @restaurant, method: 'delete' do
-          i.fas.fa-trash
+        = delete_link @restaurant
 
 h3
   span.text-warning> = render_stars(@restaurant.rating) 
