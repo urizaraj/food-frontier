@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def delete_link(resource)
-    link_to @resource, method: 'delete', data: { confirm: "Are you sure?" } do
+    link_to resource, method: 'delete', data: { confirm: "Are you sure?" } do
       tag.i class: 'fas fa-trash'
     end
   end
