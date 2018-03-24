@@ -15,7 +15,7 @@
 
 h3
   span.text-warning> = render_stars(@restaurant.rating) 
-  = @restaurant.rating
+  = @restaurant.rating.round(2)
 
 h2 = @restaurant.description
 
