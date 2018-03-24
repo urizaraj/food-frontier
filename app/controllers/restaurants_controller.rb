@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 
   def show
     return unless user_signed_in?
+    return if current_user.reviewed_restaurant? @restaurant
     @review = current_user.reviews.build
     @review.restaurant = @restaurant
   end

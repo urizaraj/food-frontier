@@ -56,6 +56,6 @@ br
 
   br
 
-- if user_signed_in?
+- if @review
   h2 Leave a review
   = render partial: 'reviews/form', locals: {restaurant: @restaurant, review: @review}
