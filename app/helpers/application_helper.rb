@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def delete_link(resource)
     link_to @resource, method: 'delete', data: { confirm: "Are you sure?" } do
-      render inline: '<i class="fas fa-trash"></i>'
+      tag.i class: 'fas fa-trash'
     end
   end
 end
