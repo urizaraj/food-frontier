@@ -1,6 +1,4 @@
-- if menu_item.errors.any?
-  - menu_item.errors.full_messages.each do |msg|
-    p = msg
+= errors menu_item
 
 = form_for [restaurant, menu_item] do |f|
   = f.fields_for :item, Item.new do |i|
