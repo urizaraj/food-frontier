@@ -6,4 +6,8 @@ module ApplicationHelper
   def render_stars(i)
     render partial: 'reviews/stars', locals: {i: i.floor}
   end
+
+  def admin?
+    current_user.admin
+  end
 end
