@@ -1,0 +1,9 @@
+table.table.mb-0
+  tbody
+    - restaurant.menu_items.send(sym).each do |mi|
+      tr
+        td 
+          = mi.name
+          br
+          small = mi.item.description
+        td = "$#{mi.price}" || "?"

@@ -1,44 +1,29 @@
-h1 = @restaurant.name
-h2.text-muted = @restaurant.description
-h3 = @restaurant.category
+.row.justify-content-between
+  .col-auto
+    h1 = @restaurant.name
+    h2 = @restaurant.description
+    h3 = @restaurant.category
 
-.row
-  .col
-    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-dark'
-    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-dark'
-    = link_to 'New Menu Item', new_restaurant_menu_item_path(@restaurant), class: 'btn btn-dark'
-    = link_to 'New Review', new_restaurant_review_path(@restaurant), class: 'btn btn-dark'
+  .col-auto.text-right
+    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-primary'
+    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-primary'
+    br
+    = link_to 'New Menu Item', new_restaurant_menu_item_path(@restaurant), class: 'btn btn-primary'
+    = link_to 'New Review', new_restaurant_review_path(@restaurant), class: 'btn btn-primary'
 
 br
 
 h2 Menu
-h3.text-primary Entrees
 .row
-  - @restaurant.menu_items.entrees.each do |item|
-    .col-4
-      h4 = item.name
-    .col-1
-      h4 = item.price ? "$#{item.price}" : '?'
-
-br
-
-h3.text-primary Sides
-.row
-  - @restaurant.menu_items.sides.each do |item|
-    .col-4
-      h4 = item.name
-    .col-1
-      h4 = item.price ? "$#{item.price}" : '?'
-
-br
-
-h3.text-primary Drinks
-.row
-  - @restaurant.menu_items.drinks.each do |item|
-    .col-4
-      h4 = item.name
-    .col-1
-      h4 = item.price ? "$#{item.price}" : '?'
+  .col-4
+    h3.text-primary Entrees
+    = render_menu_items @restaurant, :entrees
+  .col-4
+    h3.text-primary Sides
+    = render_menu_items @restaurant, :sides
+  .col-4
+    h3.text-primary Drinks
+    = render_menu_items @restaurant, :drinks
 
 br
 
