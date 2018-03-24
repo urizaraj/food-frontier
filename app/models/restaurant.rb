@@ -5,4 +5,9 @@ class Restaurant < ApplicationRecord
   has_many :reviews
 
   accepts_nested_attributes_for :menu_items
+
+  def rating
+    ratings = reviews.map(&:rating)
+    ratings.empty? ? 0 : ratings.reduce(:+).to_f / ratings.size 
+  end
 end

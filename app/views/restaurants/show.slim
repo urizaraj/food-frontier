@@ -1,8 +1,10 @@
 .row.justify-content-between
   .col-auto
     h1 = @restaurant.name
+    h3
+      span.text-warning> = render_stars(@restaurant.rating) 
+      = @restaurant.rating
     h2 = @restaurant.description
-    h3 = @restaurant.category
 
   .col-auto.text-right
     = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-primary'

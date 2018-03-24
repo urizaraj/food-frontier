@@ -6,5 +6,6 @@ h1.display-4 Browse Restaurants
       = link_to r do
         .card.mb-3
           .card-body
-            h2.card-title = r.name
+            h2.card-title.mb-0 = r.name
+            h6 = render_stars r.rating
             p.card-text.mb-0 = r.description

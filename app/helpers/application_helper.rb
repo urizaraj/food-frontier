@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def render_stars(i)
-    render partial: 'reviews/stars', locals: {i: i}
+    render partial: 'reviews/stars', locals: {i: i.floor}
   end
 end
