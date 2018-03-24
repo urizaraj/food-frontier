@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit update]
+  before_action :set_review, only: %i[edit update destroy]
   before_action :set_parent
-  
+
   def new
     @review = @parent.reviews.build
     @review.user = current_user
@@ -9,7 +9,18 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(strong_params)
+    return head(:forbidden) unless same_user?(@review)
     return render :new unless @review.save
+    redirect_to @parent
+  end
+
+  def update
+    return render :edit unless @review.update(strong_params)
+    redirect_to @parent
+  end
+
+  def destroy
+    @review.destroy
     redirect_to @parent
   end
 
@@ -17,6 +28,7 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+    return head(:forbidden) unless same_user?(@review)
   end
 
   def set_parent
@@ -26,6 +38,12 @@ class ReviewsController < ApplicationController
   end
 
   def strong_params
-    params.require(:review).permit(:title, :content, :rating, :restaurant_id, :user_id)
+    params.require(:review).permit(
+      :title, :content, :rating, :restaurant_id, :user_id
+    )
+  end
+
+  def same_user?(review)
+    review.user == current_user
   end
 end
