@@ -1,5 +1,6 @@
 class ItemTagsController < ApplicationController
   before_action :set_tag, only: %i[show edit update destroy]
+  before_action :require_admin, only: %i[new create update destroy]
 
   def index
     @main = ItemTag.main

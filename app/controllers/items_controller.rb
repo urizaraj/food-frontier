@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
+  before_action :require_admin, only: %i[new create update destroy]
 
   def index
     @items = Item.all

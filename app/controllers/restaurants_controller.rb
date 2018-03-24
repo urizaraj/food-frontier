@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_resource, only: %i[show edit update set_prices destroy]
+  before_action :require_admin, only: %i[new create update destroy set_prices]
 
   def index
     @restaurants = Restaurant.all
