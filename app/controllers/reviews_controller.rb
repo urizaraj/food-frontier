@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
-    return head(:forbidden) unless same_user?(@review)
+    return head(:forbidden) unless same_user?(@review) || admin?
   end
 
   def set_parent
