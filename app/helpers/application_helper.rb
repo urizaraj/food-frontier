@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def admin?
-    current_user.admin
+    user_signed_in? ? current_user.admin : false
   end
 end
