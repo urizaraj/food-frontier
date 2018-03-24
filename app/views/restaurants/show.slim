@@ -14,8 +14,8 @@
         = delete_link @restaurant
 
 h3
-  span.text-warning> = render_stars(@restaurant.rating) 
-  = @restaurant.rating.round(2)
+  span.text-warning.mr-3 = render_stars(@restaurant.rating) 
+  = render_rating @restaurant
 
 h2 = @restaurant.description
 
@@ -44,6 +44,12 @@ br
           .col-3
             .mb-2.text-warning = render_stars r.rating
             = r.user.name
+
+            - if admin? || r.user == current_user
+              = link_to edit_restaurant_review_path(r) do
+                i.fas.fa-cog<>
+              = delete_link restaurant_review_path(r)
+          
           .col
             h4 = r.title
             p.mb-0 = r.content
