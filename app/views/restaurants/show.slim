@@ -1,17 +1,24 @@
-.row.justify-content-between
+.row.align-items-center
   .col-auto
     h1 = @restaurant.name
-    h3
-      span.text-warning> = render_stars(@restaurant.rating) 
-      = @restaurant.rating
-    h2 = @restaurant.description
 
-  .col-auto.text-right
-    = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-primary'
-    = link_to 'Set Prices', prices_restaurant_path(@restaurant), class: 'btn btn-primary'
-    br
-    = link_to 'New Menu Item', new_restaurant_menu_item_path(@restaurant), class: 'btn btn-primary'
-    = link_to 'New Review', new_restaurant_review_path(@restaurant), class: 'btn btn-primary'
+  - if admin?
+    .col-auto
+      .h4
+        = link_to new_restaurant_menu_item_path(@restaurant) do
+          i.fas.fa-plus>
+        = link_to edit_restaurant_path(@restaurant) do
+          i.fas.fa-cog>
+        = link_to prices_restaurant_path(@restaurant) do
+          i.fas.fa-dollar-sign>
+        = link_to @restaurant, method: 'delete' do
+          i.fas.fa-trash
+
+h3
+  span.text-warning> = render_stars(@restaurant.rating) 
+  = @restaurant.rating
+
+h2 = @restaurant.description
 
 br
 

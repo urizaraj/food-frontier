@@ -1,4 +1,14 @@
-h1 = @tag.name
+.row.align-items-center
+  .col-auto
+    h1 = @tag.name
+  - if admin?
+    .col-auto
+      h4
+        = link_to edit_item_tag_path(@tag) do
+          i.fas.fa-cog>
+        = link_to @tag, method: 'delete' do
+          i.fas.fa-trash
+          
 h2 = @tag.description
 
 br

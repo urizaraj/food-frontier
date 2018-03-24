@@ -7,7 +7,7 @@
     = f.text_field :category, class: 'form-control', placeholder: 'Category'
 
   - %i[entrees sides drinks].each do |tag|
-    .mb-1: strong = tag
+    .mb-1: strong = tag.to_s.humanize
     .row
       = f.collection_check_boxes :item_ids, Item.send(tag), :id, :name do |b|
         .col-auto
