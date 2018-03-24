@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_resource, only: %i[show edit update set_prices]
+  before_action :set_resource, only: %i[show edit update set_prices destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -23,8 +23,12 @@ class RestaurantsController < ApplicationController
 
   def update
     return render :set_prices unless @restaurant.update(strong_params)
-
     redirect_to @restaurant
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to restaurants_path
   end
 
   def set_prices

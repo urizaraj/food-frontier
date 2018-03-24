@@ -1,5 +1,5 @@
 class ItemTagsController < ApplicationController
-  before_action :set_tag, only: %i[show edit update]
+  before_action :set_tag, only: %i[show edit update destroy]
 
   def index
     @main = ItemTag.main
@@ -14,6 +14,11 @@ class ItemTagsController < ApplicationController
     @tag = ItemTag.new(strong_params)
     return render :new unless @tag.save
     redirect_to @tag
+  end
+
+  def destroy
+    @tag.destroy
+    redirect_to item_tags_path
   end
 
   private
