@@ -20,7 +20,10 @@ $font-family-base: 'Hind', sans-serif;
 $link-hover-decoration: none;
 $enable-rounded: false;
 $theme-colors: (
-  'primary': #B8214E
+  'primary': #B8214E,
+  'warning': #FF9000,
+  'secondary': #FF0054,
+  'pixie': #390099
 );
 
 @import "bootstrap";
