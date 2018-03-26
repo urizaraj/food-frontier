@@ -23,4 +23,9 @@ class MenuItem < ApplicationRecord
   def self.type(sym)
     all.find_all { |mi| mi.item.send(sym)}
   end
+
+  def item_attributes=(params)
+    item = Item.find_by(name: params[:name])
+    self.item = item || Item.create(params)
+  end
 end
