@@ -3,6 +3,7 @@ class MenuItemsController < ApplicationController
 
   def new
     @menu_item = MenuItem.new(restaurant_id: @restaurant.id)
+    @item = Item.new
   end
 
   def create

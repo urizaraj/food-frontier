@@ -1,13 +1,15 @@
 = errors menu_item
 
 = form_for [restaurant, menu_item] do |f|
-  = f.fields_for :item, Item.new do |i|
+  = f.fields_for :item, item do |i|
     .form-group
       = i.label :name
       = i.text_field :name, class: 'form-control'
+
     .form-group
       = i.label :description
       = i.text_field :description, class: 'form-control'
+      
     .row
       = i.collection_radio_buttons :item_tag_ids, ItemTag.main, :id, :name do |b|
         .col-auto
