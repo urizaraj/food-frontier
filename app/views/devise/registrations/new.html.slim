@@ -12,8 +12,9 @@ h2 Sign up
     = f.email_field :email, autocomplete: "email", class: 'form-control'
 
   .form-group
-    = f.label :password
-    small.ml-2 #{@minimum_password_length} characters minimum
+    = f.label :password do
+      | Password
+      small.ml-2 #{@minimum_password_length} characters minimum
     = f.password_field :password, autocomplete: "off", class: 'form-control'
 
   .form-group
