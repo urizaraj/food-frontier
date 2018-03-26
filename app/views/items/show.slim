@@ -17,9 +17,6 @@
       strong = link_to it.name, it
 
 br
-h2 Restaurants
+h2 Restaurants with this item
 .row
-  - @item.restaurants.sort_by(&:rating).reverse.each do |r|
-    .col-auto
-      span.text-warning = render_stars r.rating
-      span.h3.ml-2.mb-0 = link_to r.name, r
+  = render @restaurants

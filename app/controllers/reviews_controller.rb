@@ -2,6 +2,10 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[edit update destroy]
   before_action :set_parent
 
+  def index
+    @reviews = @parent.reviews
+  end
+
   def new
     @review = @parent.reviews.build
     @review.user = current_user

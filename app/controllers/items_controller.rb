@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def show
+    @restaurants = @item.restaurants.sort_by(&:rating).reverse
+  end
+
   def new
     @item = Item.new
   end
