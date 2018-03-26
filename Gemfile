@@ -31,8 +31,12 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', require: 'bcrypt'
+
+gem 'omniauth'
+gem 'omniauth-github'
