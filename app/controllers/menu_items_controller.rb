@@ -7,7 +7,6 @@ class MenuItemsController < ApplicationController
 
   def create
     @menu_item = MenuItem.new(strong_params)
-    @menu_item.restaurant = @restaurant
     return render :new unless @menu_item.save
     redirect_to @restaurant
   end
@@ -22,7 +21,7 @@ class MenuItemsController < ApplicationController
     params.require(:menu_item).permit(
       :price,
       :restaurant_id,
-      item_attributes: [:description, :name, :item_tag_ids]
+      item_attributes: %i[description name item_tag_ids]
     )
   end
 end

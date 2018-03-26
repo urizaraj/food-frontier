@@ -14,7 +14,11 @@
           = b.label do
             = b.radio_button class: 'mr-2'
             = b.text
+            
   .form-group
     = f.label :price
     = f.number_field :price, class: 'form-control'
+
+  = f.hidden_field :restaurant_id
+
   = f.submit class: 'btn btn-primary'
