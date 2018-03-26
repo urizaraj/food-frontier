@@ -27,3 +27,8 @@ $theme-colors: (
 );
 
 @import "bootstrap";
+
+.field_with_errors label {
+  color: theme-color(secondary);
+  font-weight: 600;
+}
