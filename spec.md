@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many through relationship (Restaurant has many Items through MenuItems)
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (menu_items.entrees)
 - [x] Include reasonable validations for simple model objects (User, Item, ItemTag, MenuItem, Restaurant, Review)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (Restaurant.most_reviewed URL: restaurants/most_reviewed)
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
 - [x] Include logout (Devise)
