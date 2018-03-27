@@ -1,6 +1,7 @@
 class MenuItem < ApplicationRecord
   belongs_to :restaurant
   belongs_to :item
+  has_many :item_tags, through: :item
 
   accepts_nested_attributes_for :item
 
@@ -21,7 +22,8 @@ class MenuItem < ApplicationRecord
   end
 
   def self.type(sym)
-    all.find_all { |mi| mi.item.send(sym)}
+    # all.find_all { |mi| mi.item.send(sym)}
+    joins(:item_tags).where(item_tags: {name: sym.to_s.humanize})
   end
 
   def item_attributes=(params)

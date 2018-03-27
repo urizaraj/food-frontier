@@ -11,4 +11,16 @@ class ItemTag < ApplicationRecord
   def self.other
     where.not(name: %w[Entree Side Drink])
   end
+
+  def self.drink
+    exists?(name: 'Drink')
+  end
+
+  def self.entree
+    exists?(name: 'Entree')
+  end
+
+  def self.side
+    exists?(name: 'Side')
+  end
 end

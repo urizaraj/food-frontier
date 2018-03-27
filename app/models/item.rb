@@ -9,27 +9,31 @@ class Item < ApplicationRecord
   validate :has_main_tag
 
   def drink
-    item_tags.include?(ItemTag.find_by(name: 'Drink'))
+    item_tags.drink
   end
 
   def side
-    item_tags.include?(ItemTag.find_by(name: 'Side'))
+    item_tags.side
   end
 
   def entree
-    item_tags.include?(ItemTag.find_by(name: 'Entree'))
+    item_tags.entree
+  end
+
+  def self.type(name)
+    joins(:item_tags).where(item_tags: { name: name })
   end
 
   def self.drinks
-    all.find_all(&:drink)
+    type 'Drink'
   end
 
   def self.sides
-    all.find_all(&:side)
+    type 'Side'
   end
 
   def self.entrees
-    all.find_all(&:entree)
+    type 'Entree'
   end
 
   def has_main_tag
