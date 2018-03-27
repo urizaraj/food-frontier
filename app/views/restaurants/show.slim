@@ -13,7 +13,7 @@
 
   h3
     span.text-warning.mr-3 = render_stars(@restaurant.rating) 
-    = render_rating @restaurant
+    span.text-primary = render_rating @restaurant
 
   h2.mb-0 = @restaurant.description
 
@@ -21,15 +21,9 @@ br
 
 h2 Menu
 .row
-  .col-4
-    h3.text-primary Entrees
-    = render_menu_items @restaurant, :entrees
-  .col-4
-    h3.text-primary Sides
-    = render_menu_items @restaurant, :sides
-  .col-4
-    h3.text-primary Drinks
-    = render_menu_items @restaurant, :drinks
+  .col-4 = render_menu_items @restaurant, :entrees
+  .col-4 = render_menu_items @restaurant, :sides
+  .col-4 = render_menu_items @restaurant, :drinks
 
 br
 
