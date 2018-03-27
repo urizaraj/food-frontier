@@ -3,10 +3,13 @@ h1 = @user.name
 br
 
 h2 Recent Reviews
-- @user.reviews.limit(5).each do |review|
-  = link_to review.restaurant do
-    .row.mb-3
-      .col-auto = render_stars review.rating
-      .col-auto = review.restaurant.name
+.row.list-group.mb-2
+  .col-lg-6
+    - @user.reviews.limit(5).each do |review|
+        = link_to review.restaurant, class: 'list-group-item' do
+          .row
+            .col-auto = render_stars review.rating
+            .col-auto = review.restaurant.name
+            small.col-auto = review.title
 
-= link_to 'All Reviews', user_reviews_path(@user)
+= link_to 'All Reviews', user_reviews_path(@user), class: 'btn btn-outline-primary'

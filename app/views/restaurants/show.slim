@@ -51,7 +51,7 @@ br
             h4 = r.title
             p.mb-0 = r.content
 
-  .my-3 = link_to 'All Reviews', restaurant_reviews_path(@restaurant)
+  .my-3 = link_to 'All Reviews', restaurant_reviews_path(@restaurant), class: 'btn btn-outline-primary'
 
 - if @review
   h2 Leave a review
