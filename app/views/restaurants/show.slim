@@ -21,9 +21,9 @@ br
 
 h2 Menu
 .row
-  .col-4 = render_menu_items @restaurant, :entrees
-  .col-4 = render_menu_items @restaurant, :sides
-  .col-4 = render_menu_items @restaurant, :drinks
+  .col-md-4 = render_menu_items @restaurant, :entrees
+  .col-md-4 = render_menu_items @restaurant, :sides
+  .col-md-4 = render_menu_items @restaurant, :drinks
 
 br
 
@@ -49,4 +49,5 @@ br
 
 - if @review
   h2 Leave a review
-  = render partial: 'reviews/form', locals: {restaurant: @restaurant, review: @review}
+  .row
+    .col-lg-8 = render partial: 'reviews/form', locals: {restaurant: @restaurant, review: @review}
