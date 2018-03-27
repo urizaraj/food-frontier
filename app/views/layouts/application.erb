@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>
+        Food Frontier
+      </title>
+      <%= csrf_meta_tags %>
+      <link href="/hind.css" rel="stylesheet" />
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link href="/fontawesome-all.css" rel="stylesheet" />
+    </head>
+    <body>
+      <div class="container">
+        <%= render partial: 'layouts/header' %>
+        <% if notice %>
+          <div class="alert alert-success border-0 d-inline-block alert-dismissible fade show" role="alert">
+            <%= notice %>
+            <button class="close" data-dismiss="alert">
+              <%= fa 'times', 'fa-xs' %>
+            </button>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-primary border-0 d-inline-block alert-dismissible fade show" role="alert">
+            <%= alert %>
+            <button class="close" data-dismiss="alert">
+              <%= fa 'times', 'fa-xs' %>
+            </button>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </body>
+  </html>

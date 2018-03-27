@@ -1,0 +1,24 @@
+<h1 class="display-4">Browse Item Tags</h1>
+
+<div class="row text-center">
+  <% @main.each do |it| %>
+    <div class="col-4">
+      <h2>
+      <%= link_to it.name.pluralize, it %>
+      </h2>
+    </div>
+  <% end %>
+</div>
+<br />
+<h2>Other</h2>
+<div class="row">
+  <% @other.each do |it| %>
+    <div class="col-auto">
+      <%= link_to it do %>
+        <h4>
+          <%= it.name %>
+        </h4>
+      <% end %>
+    </div>
+  <% end %>
+</div>

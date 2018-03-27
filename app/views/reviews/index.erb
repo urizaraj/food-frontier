@@ -1,0 +1,26 @@
+<h1 class="display-4">
+  <%= link_to @parent.name, @parent %> - Reviews
+</h1>
+<% @reviews.each do |r| %>
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="row card-title">
+        <div class="col-auto text-warning">
+          <%= render_stars r.rating %>
+        </div>
+        <div class="col-auto">
+          <%= link_to r.restaurant.name, r.restaurant %>
+        </div>
+        <div class="col-auto">
+          <%= link_to r.user.name, r.user %>
+        </div>
+      </div>
+      <h5>
+        <%= r.title %>
+      </h5>
+      <p class="card-text">
+        <%= r.content %>
+      </p>
+    </div>
+  </div>
+<% end %>

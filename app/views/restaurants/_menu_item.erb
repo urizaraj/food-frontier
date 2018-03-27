@@ -1,0 +1,18 @@
+<h3 class="text-primary">
+  <%= sym.to_s.humanize %>
+</h3>
+
+<table class="table mb-0">
+  <tbody>
+    <% restaurant.menu_items.send(sym).each do |mi| %>
+      <tr>
+        <td>
+          <%= mi.name %>
+          <br />
+          <small> <%= mi.item.description %> </small>
+        </td>
+        <td> <%= disp_price mi %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

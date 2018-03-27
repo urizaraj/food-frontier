@@ -1,0 +1,17 @@
+<div class="col-6">
+  <%= link_to restaurant do %>
+    <div class="card mb-3 rest">
+      <div class="card-body">
+        <h2 class="card-title mb-1">
+          <%= restaurant.name %>
+        </h2>
+        <h6>
+          <%= render_stars restaurant.rating %>
+        </h6>
+        <p class="card-text mb-0">
+          <%= restaurant.description %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
