@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   root to: 'static#home'
 
   resources :restaurants do
+    get 'set_prices', on: :member
+    get 'most_reviewed', on: :collection
     resources :menu_items
     resources :reviews, only: %i[index create edit update destroy]
   end
 
-  get 'restaurants/:id/set_prices', to: 'restaurants#set_prices', as: 'prices_restaurant'
+  # get 'restaurants/:id/set_prices', to: 'restaurants#set_prices', as: 'prices_restaurant' 
 
   resources :items
   resources :item_tags
