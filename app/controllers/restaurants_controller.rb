@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   before_action :require_admin, only: %i[new create update destroy set_prices]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order(rating: :desc)
   end
 
   def show

@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @restaurants = @item.restaurants.sort_by(&:rating).reverse
+    @restaurants = @item.restaurants.order(rating: :desc)
   end
 
   def new
