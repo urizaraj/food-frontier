@@ -1,5 +1,6 @@
 class MenuItemsController < ApplicationController
   before_action :set_restaurant
+  before_action :require_admin
 
   def new
     @menu_item = MenuItem.new(restaurant_id: @restaurant.id)
