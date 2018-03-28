@@ -3,10 +3,17 @@ h1 Set Prices for #{@restaurant.name}
 = errors @restaurant
 
 = form_for @restaurant do |f|
-  = f.fields_for :menu_items, @menu_items do |m|
-    .form-group.row
-      .col-2.col-form-label = m.object.name
-      .col-4 = m.number_field :price, class: 'form-control'
+  h5 Entrees
+  = f.fields_for :menu_items, @menu_items.entrees do |m|
+    = render partial: 'menu_item_price', locals: { m: m }
+
+  h5 Sides
+  = f.fields_for :menu_items, @menu_items.sides do |m|
+    = render partial: 'menu_item_price', locals: { m: m }
+
+  h5 Drinks
+  = f.fields_for :menu_items, @menu_items.drinks do |m|
+    = render partial: 'menu_item_price', locals: { m: m }
 
   .form-group
     = f.submit class: 'btn btn-primary'
