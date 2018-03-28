@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :user_id, uniqueness: {scope: :restaurant, message: 'can only have one review per restaurant'}
 
   after_save :update_restaurant_rating
-  before_destroy :update_restaurant_rating
+  after_destroy :update_restaurant_rating
 
   def update_restaurant_rating
     restaurant.update_rating
