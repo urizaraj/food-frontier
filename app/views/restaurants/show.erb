@@ -5,6 +5,7 @@
         <%= @restaurant.name %>
       </h1>
     </div>
+
     <% if admin? %>
       <div class="col-auto">
         <div class="h4">
@@ -17,62 +18,61 @@
     <% end %>
   </div>
   <h3>
-    <span class="text-warning mr-3">
-      <%= render_stars(@restaurant.rating) %>
-    </span><span class="text-primary">
-      <%= render_rating @restaurant %>
-    </span>
+    <span class="text-warning mr-3"> <%= render_stars(@restaurant.rating) %> </span>
+    <span class="text-primary"> <%= render_rating @restaurant %> </span>
   </h3>
+  
   <h2 class="mb-0">
     <%= @restaurant.description %>
   </h2>
 </div>
+
 <br />
+
 <h2>Menu</h2>
+
 <div class="row">
-  <div class="col-md-4">
-    <%= render_menu_items @restaurant, :entrees %>
-  </div>
-  <div class="col-md-4">
-    <%= render_menu_items @restaurant, :sides %>
-  </div>
-  <div class="col-md-4">
-    <%= render_menu_items @restaurant, :drinks %>
-  </div>
+  <div class="col-md-4"> <%= render_menu_items @restaurant, :entrees %> </div>
+  <div class="col-md-4"> <%= render_menu_items @restaurant, :sides %> </div>
+  <div class="col-md-4"> <%= render_menu_items @restaurant, :drinks %> </div>
 </div>
+
 <br />
+
 <% unless @restaurant.reviews.empty? %>
   <h2>Recent Reviews</h2>
   <% @restaurant.reviews.each do |r| %>
-  <div class="card mb-2">
-    <div class="card-body">
-      <div class="row justify-content-between">
-        <div class="col-3">
-          <div class="mb-2 text-warning">
-            <%= render_stars r.rating %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <div class="row justify-content-between">
+          <div class="col-3">
+            <div class="mb-2 text-warning">
+              <%= render_stars r.rating %>
+            </div>
+            <%= r.user.name %>
+            <% if admin? || r.user == current_user %>
+              <%= link_to fa('cog'), edit_restaurant_review_path(@restaurant, r) %>
+              <%= delete_link restaurant_review_path(@restaurant, r) %>
+            <% end %>
           </div>
-          <%= r.user.name %>
-          <% if admin? || r.user == current_user %>
-            <%= link_to fa('cog'), edit_restaurant_review_path(@restaurant, r) %>
-            <%= delete_link restaurant_review_path(@restaurant, r) %>
-          <% end %>
-        </div>
-        <div class="col">
-          <h4>
-            <%= r.title %>
-          </h4>
-          <p class="mb-0">
-            <%= r.content %>
-          </p>
+          <div class="col">
+            <h4>
+              <%= r.title %>
+            </h4>
+            <p class="mb-0">
+              <%= r.content %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
+  <% end %>
+
+  <div class="my-3">
+    <%= link_to 'All Reviews', restaurant_reviews_path(@restaurant), class: 'btn btn-outline-primary' %>
   </div>
 <% end %>
-<div class="my-3">
-  <%= link_to 'All Reviews', restaurant_reviews_path(@restaurant), class: 'btn btn-outline-primary' %>
-</div>
-<% end %>
+
 <% if @review %>
   <h2>Leave a review</h2>
   <div class="row">
