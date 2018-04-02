@@ -6,6 +6,10 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.order(rating: :desc)
   end
 
+  def most_reviewed
+    @restaurants = Restaurant.most_reviewed
+  end
+
   def show
     return unless user_signed_in?
     return if current_user.reviewed_restaurant? @restaurant

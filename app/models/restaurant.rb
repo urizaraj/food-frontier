@@ -19,4 +19,8 @@ class Restaurant < ApplicationRecord
     value = ratings.empty? ? 0 : (ratings.reduce(:+).to_f / ratings.size)
     update(rating: value)
   end
+
+  def self.most_reviewed
+    joins(:reviews).group(:id).order('COUNT(reviews.id) DESC')
+  end
 end

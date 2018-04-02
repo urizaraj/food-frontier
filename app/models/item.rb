@@ -8,18 +8,6 @@ class Item < ApplicationRecord
   # validates :description, presence: true
   validate :has_main_tag
 
-  def drink
-    item_tags.drink
-  end
-
-  def side
-    item_tags.side
-  end
-
-  def entree
-    item_tags.entree
-  end
-
   def self.type(name)
     joins(:item_tags).where(item_tags: { name: name })
   end
@@ -39,5 +27,20 @@ class Item < ApplicationRecord
   def has_main_tag
     return if [drink, side, entree].one?
     errors.add(:base, 'Must be a drink, entree, or side')
+  end
+
+  def drink
+    # item_tags.drink
+    item_tags.any? { |it| it.name == 'Drink'}
+  end
+
+  def side
+    # item_tags.side
+    item_tags.any? { |it| it.name == 'Side'}
+  end
+
+  def entree
+    # item_tags.entree
+    item_tags.any? { |it| it.name == 'Entree'}
   end
 end
