@@ -22,6 +22,11 @@ class ItemTagsController < ApplicationController
     redirect_to item_tags_path
   end
 
+  def update
+    return render :edit unless @tag.update(strong_params)
+    redirect_to item_tags_path
+  end
+
   private
 
   def strong_params
