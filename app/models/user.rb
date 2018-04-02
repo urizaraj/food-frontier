@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: %i[github]
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :name, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
 
