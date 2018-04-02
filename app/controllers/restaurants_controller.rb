@@ -28,7 +28,8 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    return render :set_prices unless @restaurant.update(strong_params)
+    template = (params.key?(:menu_items_attributes) ? :set_prices : :edit)
+    return render template unless @restaurant.update(strong_params)
     redirect_to @restaurant
   end
 

@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(strong_params)
+    return render :edit unless @item.update(strong_params)
     redirect_to items_path
   end
 
