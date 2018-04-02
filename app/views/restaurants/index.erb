@@ -1,6 +1,13 @@
 <h1 class="display-4">
   Browse Restaurants
 </h1>
+
+<div class="mb-2">
+  <%= link_to most_reviewed_restaurants_path, class: 'btn btn-primary' do %>
+  <%= fa 'sort' %> Most Reviewed
+  <% end %>
+</div>
+
 <div class="row">
   <%= render @restaurants %>
 </div>
