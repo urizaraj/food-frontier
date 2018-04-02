@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[edit update destroy]
   before_action :set_parent
+  before_action :verify_parent, only: %i[edit update destroy]
 
   def index
     @reviews = @parent.reviews
@@ -17,6 +18,8 @@ class ReviewsController < ApplicationController
     return render :new unless @review.save
     redirect_to @parent
   end
+
+  def edit; end
 
   def update
     return render :edit unless @review.update(strong_params)
@@ -49,5 +52,9 @@ class ReviewsController < ApplicationController
 
   def same_user?(review)
     review.user == current_user
+  end
+
+  def verify_parent
+    return redirect_to @parent unless @parent.reviews.include? @review
   end
 end
