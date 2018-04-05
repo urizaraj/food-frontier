@@ -23,6 +23,7 @@ class MenuItemsController < ApplicationController
     params.require(:menu_item).permit(
       :price,
       :restaurant_id,
+      :restaurant_description,
       item_attributes: %i[description name item_tag_ids]
     )
   end

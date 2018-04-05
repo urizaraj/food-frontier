@@ -30,4 +30,8 @@ class MenuItem < ApplicationRecord
     item = Item.find_by(name: params[:name])
     self.item = item || Item.create(params)
   end
+
+  def description
+    return (self.restaurant_description ? self.restaurant_description : self.item.description)
+  end
 end
