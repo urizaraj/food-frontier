@@ -1,0 +1,8 @@
+h1.display-4 Browse Restaurants
+
+.mb-2 = link_to most_reviewed_restaurants_path, class: 'btn btn-primary' do
+  => fa 'sort'
+  | Most Reviewed
+
+.row
+  = render @restaurants

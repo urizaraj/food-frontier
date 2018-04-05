@@ -1,0 +1,11 @@
+h3.text-primary = sym.to_s.humanize
+
+table.table.mb-0
+  tbody
+    - restaurant.menu_items.send(sym).each do |mi|
+      tr
+        td 
+          = mi.name
+          br
+          small = mi.description
+        td = disp_price mi

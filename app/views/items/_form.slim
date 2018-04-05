@@ -1,0 +1,26 @@
+= errors item
+
+= form_for item do |f|
+  .form-group 
+    = f.label :name
+    = f.text_field :name, class: 'form-control', placeholder: 'Name'
+
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: 'form-control', placeholder: 'Description'
+
+  .row
+    = f.collection_check_boxes :item_tag_ids, ItemTag.main, :id, :name do |b|
+      .col-auto
+        = b.label do
+          = b.check_box class: 'mr-2'
+          = b.text
+
+  .row
+    = f.collection_check_boxes :item_tag_ids, ItemTag.other, :id, :name do |b|
+      .col-auto
+        = b.label do
+          = b.check_box class: 'mr-2'
+          = b.text
+
+  .form-group = f.submit class: 'btn btn-primary'

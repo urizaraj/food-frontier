@@ -1,0 +1,22 @@
+.row.align-items-center
+  .col-auto
+    h1 = @item.name
+  - if admin?
+    .col-auto
+      .h4
+        = link_to edit_item_path(@item) do
+          i.fas.fa-cog>
+        = delete_link @item
+
+- if @item.description
+  h2 = @item.description
+
+.row
+  - @item.item_tags.each do |it|
+    .col-auto
+      strong = link_to it.name, it
+
+br
+h2 Restaurants with this item
+.row
+  = render @restaurants

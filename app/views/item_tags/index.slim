@@ -1,0 +1,12 @@
+h1.display-4 Browse Item Tags
+
+.row.text-center
+  - @main.each do |it|
+    .col-4
+      h2 = link_to it.name.pluralize, it
+br
+h2 Other
+.row
+  - @other.each do |it|
+    .col-auto = link_to it do
+      h4 = it.name

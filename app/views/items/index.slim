@@ -1,0 +1,16 @@
+h1.display-4 Browse Items
+
+h2 Entrees
+.row
+  - @items.entrees.each do |item|
+    = render partial: 'item', locals: { item: item }
+br
+h2 Sides
+.row
+  - @items.sides.each do |item|
+    = render partial: 'item', locals: { item: item }
+br
+h2 Drinks
+.row
+  - @items.drinks.each do |item|
+    = render partial: 'item', locals: { item: item }

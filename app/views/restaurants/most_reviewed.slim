@@ -1,0 +1,11 @@
+h1 Most Reviewed Restaurants
+
+.row
+  - @restaurants.each do |r|
+    .col-md-6
+      = link_to r do
+        .card.mb-3.rest
+          .card-body
+            h2.card-title.mb-1 = r.name
+            h6 = render_stars r.rating
+            h4 #{ r.reviews.count } Reviews
